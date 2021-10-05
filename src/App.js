@@ -6,7 +6,6 @@ import Sidebar from "./components/Sidebar";
 function App() {
   return (
     <Container>
-      {/* <Sidebar /> */}
       <MainContent />
     </Container>
   );
