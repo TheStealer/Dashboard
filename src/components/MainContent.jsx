@@ -3,19 +3,22 @@ import styled from "styled-components";
 import HeaderContainer from "./HeaderContainer";
 import LeftContainer from "./LeftContainer";
 import RightContainer from "./RightContainer";
+import { Route} from "react-router-dom";
 function MainContent() {
     return (
         <MainContent2>
-            <HeaderContainer
-                title="Total de cosas" />
+            <Route path="/api/products/detail/:id" >
+            <HeaderContainer title="Contenedor de Encabezado" cosa="products" />
+            </Route>
             <MainContent3>
-                <LeftContainer
-                    productTitle="Producto A"
-                    description="Probando descripción del producto"
-                    price="$300"
-                    quantity="5"
-                />
-                <RightContainer title="Categorías en base de datos"/>
+                <Route path="/api/products/detail/:id">
+                    <LeftContainer
+                        title="Contenedor de Productos"
+                    />
+                </Route>
+                <Route path="/api/products/detail/:id" >
+                <RightContainer title="Categorías en base de datos" cosa="categories"/>
+                </Route>
             </MainContent3>
         </MainContent2>
     )}

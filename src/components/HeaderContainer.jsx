@@ -5,24 +5,23 @@ function HeaderContainer(props) {
   return (
     <HeaderContainerStyled>
           <h1>{props.title}</h1>
+          <CardsContainer>
           <Cards
-              titulo="Películas"
-              cantidad="20"
-          />
-          <Cards
-              titulo="Actores"
-              cantidad="128"
-          />
-          <Cards
-              titulo="Productos"
-              cantidad="1368"
-          />
+              cosa={props.cosa}
+                          />
+                <Cards
+              cosa={"categories"}
+                          />
+                <Cards
+              cosa={"users"}
+                                />
+          </CardsContainer>
     </HeaderContainerStyled>
     );
 }
 const HeaderContainerStyled = styled.div`
         display: flex;
-        flex-direction: rows;
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
         padding: 1rem;
@@ -31,5 +30,13 @@ const HeaderContainerStyled = styled.div`
         gap: 1rem;
         width: 98%;
         height: 10rem;
+        `;
+const CardsContainer = styled.div`
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
         `;
 export default HeaderContainer;
