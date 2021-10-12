@@ -20,10 +20,6 @@ function RightContainer(props) {
             .catch((err) => console.log(err));
     }, [])
 
-    let numero= products.reduce((i, product) => {
-        return product.id === i
-    }, []);
-    console.log(numero)
      return (
         <Container>
              <h3>{props.title}</h3>
@@ -31,7 +27,7 @@ function RightContainer(props) {
                  categorias.map((categoria, i) => (
                      <CardContainer key={i}>
                          <h1>{categoria.name}</h1>
-                         <h1>{numero}</h1>
+                         <h1>{products.filter(product => product.Category.name === categoria.name).length}</h1>
                      </CardContainer>
                  )
                     )}

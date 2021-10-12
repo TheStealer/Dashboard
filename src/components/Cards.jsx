@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 function Cards(props) {
     const [products, setProducts] = useState([]);
-    const [totales,setTotals] = useState([]);
     useEffect(() => {
         if (props.cosa === "products") {
             console.log("fetch to products api")
@@ -12,7 +11,6 @@ function Cards(props) {
                 .then(data => {
                     console.log(data.data)
                     setProducts(data.data)
-                    setTotals(data.meta.total)
                 })
                 .catch((err) => console.log(err));
         } else if (props.cosa === "categories") {
@@ -22,7 +20,6 @@ function Cards(props) {
                 .then(data => {
                     console.log(data)
                     setProducts(data.data)
-                    setTotals(data.meta.total)
                 })
                 .catch((err) => console.log(err));
         }
@@ -33,7 +30,6 @@ function Cards(props) {
                 .then(data => {
                     console.log(data)
                     setProducts(data.data)
-                    setTotals(data.meta.total)
                 })
                 .catch((err) => console.log(err));
         }
