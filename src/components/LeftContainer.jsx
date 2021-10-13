@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 function LeftContainer(props) {
     const [detail, setDetail] = useState([]);
-    const { id }: {id: string} = useParams();
-        console.log(JSON.stringify(id.id));
+    // const { id }: { id: string } = useParams();
+    // console.log(JSON.stringify(id.id));
+    console.log(props.id);
     useEffect(() => {
-        fetch(`https://grupo-1-games.herokuapp.com/api/products/detail/${id}`)
+        fetch(`https://grupo-1-games.herokuapp.com/api/products/detail/${props.id}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data.data)
@@ -15,16 +16,29 @@ function LeftContainer(props) {
             })
             .catch((err) => console.log(err));
     }, []);
-    return (
-        <Container>
-            <h1>{props.title}</h1>
-            <h2>{detail.name}</h2>
-            <h3>{detail.id}</h3>
-            <p>{detail.description}</p>
-            <p>{detail.price}</p>
-            <p>Stock: {detail.stock}</p>
-        </Container>
-  );
+    useEffect(() => {
+        console.log("Actualizando componente")
+    }, [detail])
+
+    if (props.id != null) {
+        return (
+            <Container >
+                <h1>{props.title}</h1>
+                <h2>{detail.name}</h2>
+                <h3>{detail.id}</h3>
+                <p>{detail.description}</p>
+                <p>{detail.price}</p>
+                <p>Stock: {detail.stock}</p>
+            </Container>
+        );
+    }
+    else {
+        return (
+            <Container >
+                <h1> Elemento {props.id} no encontrado</h1>
+            </Container>
+        );
+    }
 }
 
 const Container = styled.div`

@@ -1,27 +1,52 @@
-import React from "react";
+import React, {useRef,useState,useEffect} from "react";
 import styled from "styled-components";
 import HeaderContainer from "./HeaderContainer";
 import LeftContainer from "./LeftContainer";
 import RightContainer from "./RightContainer";
-import { Route} from "react-router-dom";
+import { Route } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 function MainContent() {
+    const history = useHistory();
+    let id = useRef();
+    console.log(id)
+    let number_id;
+    let [idnumber, setIdNumber] = useState([]);
+    useEffect(() => {
+            number_id = id.current.value;
+            setIdNumber(number_id);
+            console.log(idnumber)
+    }, [idnumber]);
+    function valor() {
+        number_id = id.current.value;
+        console.log(number_id);
+        history.push(`/${number_id}`);
+        return number_id;
+    }
+
     return (
         <MainContent2>
-            <Route path="/api/products/detail/:id" >
+            <div>
+                <input type="text" placeholder="Busqueda" defaultValue="78" ref={id}></input>
+                <button onClick={valor}>Buscar</button>
+            </div>
+            <Route path="/" >
             <HeaderContainer title="Contenedor de Encabezado" cosa="products" />
             </Route>
             <MainContent3>
-                <Route path="/api/products/detail/:id">
+                <Route  path="/">
                     <LeftContainer
                         title="Contenedor de Productos"
+                         id={78}
                     />
                 </Route>
-                <Route path="/api/products/detail/:id" >
-                <RightContainer title="Categorías en base de datos" cosa="categories"/>
+                <Route path="/" >
+                    <RightContainer title="Categorías en base de datos" cosa="categories"/>
                 </Route>
             </MainContent3>
         </MainContent2>
     )}
+
 
     const MainContent2 = styled.div`
   display: flex;
