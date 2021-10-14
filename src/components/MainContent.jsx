@@ -15,12 +15,14 @@ function MainContent() {
     useEffect(() => {
             number_id = id.current.value;
             setIdNumber(number_id);
-            console.log(idnumber)
+            console.log("Actualizando id",idnumber)
     }, [idnumber]);
     function valor() {
         number_id = id.current.value;
         console.log(number_id);
         history.push(`/${number_id}`);
+        setIdNumber({})
+        setIdNumber(number_id);
         return number_id;
     }
 
@@ -34,10 +36,10 @@ function MainContent() {
             <HeaderContainer title="Contenedor de Encabezado" cosa="products" />
             </Route>
             <MainContent3>
-                <Route  path="/">
+                <Route exact path={"/:id"}>
                     <LeftContainer
                         title="Contenedor de Productos"
-                         id={78}
+                         id={idnumber}
                     />
                 </Route>
                 <Route path="/" >

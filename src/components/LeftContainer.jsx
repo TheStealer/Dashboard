@@ -15,7 +15,7 @@ function LeftContainer(props) {
                 setDetail(data.data)
             })
             .catch((err) => console.log(err));
-    }, []);
+    }, [detail]);
     useEffect(() => {
         console.log("Actualizando componente")
     }, [detail])
