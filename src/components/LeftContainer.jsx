@@ -1,12 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 function LeftContainer(props) {
     const [detail, setDetail] = useState([]);
-    // const { id }: { id: string } = useParams();
-    // console.log(JSON.stringify(id.id));
-    console.log(props.id);
     useEffect(() => {
         fetch(`https://grupo-1-games.herokuapp.com/api/products/detail/${props.id}`)
             .then(res => res.json())
@@ -48,7 +44,7 @@ const Container = styled.div`
     align-items: center;
     width: 48%;
     height: 100%;
-    background-color: #f5f5f5;
+    background-color: rgba(27, 204, 101, 0.5);
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;

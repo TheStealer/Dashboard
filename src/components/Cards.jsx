@@ -33,11 +33,12 @@ function Cards(props) {
                 })
                 .catch((err) => console.log(err));
         }
-    }, []);
+    }, [props.cosa]);
 
     let contador = 0;
     products.map((product, i) => {
         contador = i + 1;
+        return contador
     });
 
     return (

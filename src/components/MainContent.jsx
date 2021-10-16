@@ -3,6 +3,9 @@ import styled from "styled-components";
 import HeaderContainer from "./HeaderContainer";
 import LeftContainer from "./LeftContainer";
 import RightContainer from "./RightContainer";
+import LastItem from "./LastItem";
+import Items from "./Items";
+import Users from "./Users";
 import { Route } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
@@ -46,6 +49,24 @@ function MainContent() {
                     <RightContainer title="Categorías en base de datos" cosa="categories"/>
                 </Route>
             </MainContent3>
+            <MainContent4>
+                <Route path="/">
+                    <LastItem title="Último" cosa="product" />
+                    <LastItem title="Último" cosa="user"/>
+                </Route>
+            </MainContent4>
+            <h1>Lista de Productos</h1>
+            <MainContent4>
+                <Route path="/">
+                    <Items title="Lista de Productos" cosa="product" />
+                </Route>
+            </MainContent4>
+            <h1>Lista de usuarios</h1>
+            <MainContent4>
+                <Route path="/">
+                    <Users/>
+                </Route>
+            </MainContent4>
         </MainContent2>
     )}
 
@@ -54,9 +75,10 @@ function MainContent() {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0 1rem;
+  height: 100%;
+  margin: 1rem 1rem;
   padding: 1rem;
-  background-color: gray;
+  background-color: #1b8ecc;
   border-radius: 2rem;
   gap: 3rem;
   align-items: center;
@@ -68,10 +90,23 @@ const MainContent3 = styled.div`
         height: 100%;
         margin: 0 1rem;
         padding: 1rem;
-        background-color: gray;
+        background-color: #1b8ecc;
         border-radius: 2rem;
         gap: 3rem;
         align-items: center;
+`;
+const MainContent4 = styled.div`
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        margin: 0 1rem;
+        padding: 1rem;
+        background-color: #1b8ecc;
+        border-radius: 2rem;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
 `;
 
 export default MainContent;
